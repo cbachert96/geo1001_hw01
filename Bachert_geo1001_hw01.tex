@@ -1,0 +1,309 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{siunitx}
+
+
+\title{Assignment 01 - Statistical analysis of a heat stress measurement dataset}
+\author{Carolin Bachert}
+\date{September 2020}
+
+\begin{document}
+
+\maketitle
+
+
+
+The following report presents a statistical analysis of 
+a heat stress measurement dataset. The data is collected by
+ five Kestrel 5400 Sensors which will in the following be referred 
+ to as “Sensor A-E” \cite{Maiullari2020}.
+
+\section{Part A1}
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|lllll}
+                             & \multicolumn{5}{c}{\textbf{MEAN}}                                                                 \\
+                             & \textbf{SENSOR A} & \textbf{SENSOR B} & \textbf{SENSOR C} & \textbf{SENSOR D} & \textbf{SENSOR E} \\ \hline
+Direction ‚ True             & 209.41            & 183.41            & 183.59            & 198.33            & 223.96            \\
+Wind Speed                   & 1.29              & 1.24              & 1.37              & 1.58              & 0.60              \\
+Crosswind Speed              & 0.96              & 0.84              & 0.96              & 1.21              & 0.44              \\
+Headwind Speed               & 0.16              & -0.13             & -0.26             & -0.30             & 0.19              \\
+Temperature                  & 17.97             & 18.07             & 17.91             & 18.00             & 18.35             \\
+Globe Temperature            & 21.54             & 21.80             & 21.59             & 21.36             & 21.18             \\
+Wind Chill                   & 17.84             & 17.95             & 17.77             & 17.84             & 18.29             \\
+Relative Humidity            & 78.18             & 77.88             & 77.96             & 77.94             & 76.79             \\
+Heat Stress Index            & 17.90             & 18.00             & 17.83             & 17.92             & 18.29             \\
+Dew Point                    & 13.55             & 13.53             & 13.46             & 13.51             & 13.56             \\
+Psychro Wet Bulb Temperature & 15.27             & 15.30             & 15.20             & 15.26             & 15.41             \\
+Station Pressure             & 1016.17           & 1016.66           & 1016.69           & 1016.73           & 1016.17           \\
+Barometric Pressure          & 1016.13           & 1016.62           & 1016.65           & 1016.69           & 1016.13           \\
+Altitude                     & -25.99            & -30.06            & -30.34            & -30.65            & -25.96            \\
+Density Altitude             & 137.32            & 135.58            & 129.62            & 132.41            & 150.84            \\
+NA Wet Bulb Temperature      & 15.98             & 16.00             & 15.93             & 15.92             & 15.94             \\
+WBGT                         & 17.25             & 17.32             & 17.23             & 17.18             & 17.19             \\
+TWL                          & 301.39            & 299.45            & 301.90            & 305.25            & 284.12            \\
+Direction ‚ Mag              & 208.91            & 183.22            & 183.08            & 197.83            & 223.90           
+\end{tabular}%
+}
+\caption{Means of the Sensor variables }
+\label{tab:my-table}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|lllll}
+                             & \multicolumn{5}{c}{\textbf{VARIANCE}}                                                             \\
+\textbf{}                    & \textbf{SENSOR A} & \textbf{SENSOR B} & \textbf{SENSOR C} & \textbf{SENSOR D} & \textbf{SENSOR E} \\ \hline
+Direction ‚ True             & 10108.94          & 9977.22           & 7703.36           & 8133.89           & 9308.29           \\
+Wind Speed                   & 1.25              & 1.30              & 1.43              & 1.74              & 0.51              \\
+Crosswind Speed              & 0.93              & 0.88              & 1.04              & 1.45              & 0.32              \\
+Headwind Speed               & 1.03              & 1.26              & 1.27              & 1.23              & 0.32              \\
+Temperature                  & 15.86             & 16.63             & 16.10             & 16.11             & 19.04             \\
+Globe Temperature            & 68.19             & 66.05             & 67.94             & 61.20             & 63.22             \\
+Wind Chill                   & 16.26             & 17.04             & 16.54             & 16.56             & 19.14             \\
+Relative Humidity            & 376.01            & 408.62            & 374.62            & 389.86            & 406.49            \\
+Heat Stress Index            & 15.00             & 15.44             & 15.36             & 15.12             & 18.48             \\
+Dew Point                    & 9.72              & 9.64              & 10.08             & 10.07             & 9.42              \\
+Psychro Wet Bulb Temperature & 6.94              & 6.77              & 7.24              & 7.04              & 7.00              \\
+Station Pressure             & 38.47             & 36.84             & 37.69             & 34.99             & 38.94             \\
+Barometric Pressure          & 38.47             & 36.83             & 37.68             & 34.95             & 38.94             \\
+Altitude                     & 2663.64           & 2545.71           & 2608.53           & 2419.72           & 2692.35           \\
+Density Altitude             & 26510.04          & 26863.31          & 26986.60          & 26516.13          & 29714.93          \\
+NA Wet Bulb Temperature      & 10.01             & 9.81              & 10.48             & 9.99              & 9.43              \\
+WBGT                         & 16.14             & 15.84             & 16.55             & 15.51             & 15.49             \\
+TWL                          & 814.77            & 790.07            & 766.53            & 616.01            & 1289.91           \\
+Direction ‚ Mag              & 10105.68          & 9975.45           & 7704.62           & 8135.32           & 9268.01          
+\end{tabular}%
+}
+\caption{Variance of the Sensor variables}
+\label{tab:my-table}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|lllll}
+                             & \multicolumn{5}{c}{\textbf{STANDARD DEVIATION}}                                                   \\
+\textbf{}                    & \textbf{SENSOR A} & \textbf{SENSOR B} & \textbf{SENSOR C} & \textbf{SENSOR D} & \textbf{SENSOR E} \\ \hline
+Direction ‚ True             & 100.54            & 99.89             & 87.77             & 90.19             & 96.48             \\
+Wind Speed                   & 1.12              & 1.14              & 1.20              & 1.32              & 0.72              \\
+Crosswind Speed              & 0.96              & 0.94              & 1.02              & 1.20              & 0.56              \\
+Headwind Speed               & 1.02              & 1.12              & 1.13              & 1.11              & 0.56              \\
+Temperature                  & 3.98              & 4.08              & 4.01              & 4.01              & 4.36              \\
+Globe Temperature            & 8.26              & 8.13              & 8.24              & 7.82              & 7.95              \\
+Wind Chill                   & 4.03              & 4.13              & 4.07              & 4.07              & 4.37              \\
+Relative Humidity            & 19.39             & 20.21             & 19.36             & 19.74             & 20.16             \\
+Heat Stress Index            & 3.87              & 3.93              & 3.92              & 3.89              & 4.30              \\
+Dew Point                    & 3.12              & 3.10              & 3.18              & 3.17              & 3.07              \\
+Psychro Wet Bulb Temperature & 2.64              & 2.60              & 2.69              & 2.65              & 2.65              \\
+Station Pressure             & 6.20              & 6.07              & 6.14              & 5.92              & 6.24              \\
+Barometric Pressure          & 6.20              & 6.07              & 6.14              & 5.91              & 6.24              \\
+Altitude                     & 51.61             & 50.46             & 51.07             & 49.19             & 51.89             \\
+Density Altitude             & 162.82            & 163.90            & 164.28            & 162.84            & 172.38            \\
+NA Wet Bulb Temperature      & 3.16              & 3.13              & 3.24              & 3.16              & 3.07              \\
+WBGT                         & 4.02              & 3.98              & 4.07              & 3.94              & 3.94              \\
+TWL                          & 28.54             & 28.11             & 27.69             & 24.82             & 35.92             \\
+Direction ‚ Mag              & 100.53            & 99.88             & 87.78             & 90.20             & 96.27            
+\end{tabular}%
+}
+\caption{Standard Deviation of the Sensor variables}
+\label{tab:my-table}
+\end{table}
+
+Tables 1 to 3 show the mean statistics Mean, Variance and Standard Deviation for all the variables of the five Sensors. In regard to the following questions, the values of Temperature, Wind Speed and Wind Direction will be further discussed. The Temperature means of the Sensors range between 17.91\textdegree{}C to 18.35\textdegree{}C. Also the variances of the Temperatures are similar, with an exception of Sensor E. Here, the data is with a value of 19.04 more spread out than the other ones which range around the value 16.5. This tendency of slightly more spread out data measured by Senor E can also be observed through the standard deviation. For the variable Wind Speed, on the contrary, the variance and standard deviation of Sensor E are lower than the values of the other Sensors. But generally, the data of the five Sensors are all very similar. This can be seen at the Wind Direction. On average for all of the Sensors, the wind comes from the direction SSW.
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{Histogram 5.png}
+  \caption{Histograms Temperature with 5 bins}
+  \label{fig:Histogram5}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{Histogram 50.png}
+  \caption{Histograms Temperature with 50 bins}
+  \label{fig:Histogram50}
+\end{figure}
+
+All the Histograms, with 5 and 50 bins, show a right-skewed distribution. The 5-bin-Histograms contain much more values per bin as the 50-bin-Histograms. Through this simplification of the data, important information can be overseen. For example, the local maximum at around 20\textdegree{}C, which can be seen in the 50-bin-Histograms, is not visible in the Histograms with 5 bins. Consequently, a small number of bins can withhold important information about the distribution. On the other hand, a large number of bins can cause noise so that the underlying pattern of the distribution is hard to be seen.
+
+\begin{figure} [H]
+\centering
+  \includegraphics[scale = 0.7]{Frequency Polygons.png}
+  \caption{Frequency Polygons Temperature}
+  \label{fig:Frequency}
+\end{figure}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{Boxplot Temperature.png}
+  \caption{Boxplots Temperature}
+  \label{fig:Box_temp}
+\end{figure}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{Boxplot Wind Speed.png}
+  \caption{Boxplots Wind Speed}
+  \label{fig:Box_ws}
+\end{figure}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{Boxplot Wind Direction.png}
+  \caption{Boxplots Wind Direction}
+  \label{fig:Box_wd}
+\end{figure}
+
+\section{Part A2}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{PMF Temperature.png}
+  \caption{PMF Temperature}
+  \label{fig:PMF}
+\end{figure}
+
+Like Histograms, PMFs visualise the distribution of data, with the difference that the latter are normalised by their sample size. All of the graphs show right-skewed distributions which can be determined by the longer tails, starting from the peak, to the right side. This is most apparent at Sensor E. Moreover, all of the PMFs have the highest probability at around 16\textdegree{}C, followed by a decline before reaching a local maximum at around 20\textdegree{}C. Though, these maxima are differently prominent, the overall distribution follows the same general shape.
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{CDF Temperature 2.png}
+  \caption{CDF Temperature}
+  \label{fig:CDF}
+\end{figure}
+
+The CDFs also display very similar shapes. In all of them, the highest step, which represents the most frequent value, occurs at around 16°C. Furthermore, this value coincides or lies just above the median. This means that 50\% of the values are lower than 16°C and the other 50\% are higher. Still the functions differ slightly, which is among others, visible at the minimum and maximum Temperatures. They are, for Sensor E, higher than for the other Sensors. But to compare the CDFs in more detail, it could be helpful to plot all of them in one graph.
+
+
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{PDF Temperature.png}
+  \caption{PDF Temperature}
+  \label{fig:PDF}
+\end{figure}
+
+The depicted PDFs are presented by the lines above the Histograms. They follow the Histograms’ shape in a smooth way. As PMFs and Histograms have already been discussed and it showed that they follow the same pattern, it is evident that the PDFs are also very similar. Through the smoothed outline of the PDF those similarities are even more emphasised. Furthermore, the positive skewness becomes more apparent as well.
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{InkedKDE Wind Speed_LI.jpg}
+  \caption{PDF and Kernel Density for Wind Speed}
+  \label{fig:KDE}
+\end{figure}
+
+The PDF is presented by the bars and the KDE by the line. There are two main differences between them. The first one is that the PDF starts at 0, whereas the KDE starts before that. The other difference is that the KDE is smoother than the PDF. The values do not get as high as the ones from the PDF. Hence, the KDE gives a good overview of the pattern of the distribution without being distracted from too much background noise. 
+
+\section{Part A3}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{Scatter Plot.png}
+  \caption{Scatter Plot}
+  \label{fig:Scatter}
+\end{figure}
+
+Generally, it can be observed from the graphs, that the Temperature values and the WBGT values are all strongly positively correlated between the Sensors (coefficients all above 0.9). However, the correlations between Sensor E and any other Sensor show a lower coefficient than the correlations between the other Sensors. For Temperature and WBGT, no remarkable differences can be observed between the Spearman and Pearson rank coefficients. Looking at the Crosswind Speed, the values of the Sensors are still positively correlated, but not as strongly. Yet, the Spearman rank coefficient shows slightly higher values (range 0.55 – 0.65) than the Pearson rank coefficient (range 0.4 – 0.55). Furthermore, it is noticeable that the correlations with Sensor E are again the lowest.
+
+\begin{figure} []
+  \centering
+  \includegraphics[scale = 0.3]{Sensors.jpg}
+  \caption{Location of the Sensors}
+  \label{fig:Loaction}
+\end{figure}
+
+Sensors which are located close to each other and are thus exposed to similar weather conditions will correlate more strongly. As remarked in the scatter plots, Sensor E differs most from the other Sensors. Location 1, as it can be seen in the picture, is somewhat isolated from the other locations. It is placed very close to the surrounding buildings, which protect it from north, east and south. Therefore, I assume Sensor E is placed at Location 1. For the Sensors A to D, all the correlation coefficients of Temperature and WBGT are too similar to make any assumptions out of them. But for the Crosswind Speed the coefficients differ more from each other. In both, the Spearman and Pearson coefficient, the correlations between the Sensors AB and CD are the highest. Based on that, it can be assumed that these two pairs are respectively placed close to each other. Looking at the locations, it is apparent that 4\&5 as well as 2\&3 are situated near to each other. To evaluate which pairs belong together, it helps to look at the Boxplots of the Wind Direction. Location 2 and 3 look more exposed to wind coming from multiple directions, whereas Locations 4 and 5 are more protected through surrounding buildings. The boxes for Sensor A and B reveal that in half of the cases the wind comes from a direction in between \ang{120} and \ang{290}. For Sensor C and D, however, the range to which 50\% of the values belong to, is with 130 much smaller. Taking the Pearson rank coefficients for the Crosswind Speed as an explanation, I assume that Sensor A belongs to Location 3. The highest correlation is towards Sensor B which must be, following the previous argumentation, at Location 2. The second highest correlation is AC. Since location 4 is next closest to Location 3, I presume that Sensor C is placed at location 4. Hence Sensor D must be at Location 5.
+
+\noindent Concludingly, I hypothesise that the Sensors are located as follows:
+
+\begin{center}
+Sensor A $\Rightarrow$ Location 3
+
+Sensor B $\Rightarrow$ Location 2
+
+Sensor C $\Rightarrow$ Location 4
+
+Sensor D $\Rightarrow$ Location 5
+
+Sensor E $\Rightarrow$ Location 1
+\end{center}
+
+\section{Part A4}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|ll}
+                       & Start  & End    \\ \hline
+Temperature   Sensor A & 17.81 & 18.13 \\
+Temperature   Sensor B & 17.91 & 18.23 \\
+Temperature   Sensor C & 17.76 & 18.07 \\
+Temperature   Sensor D & 17.84 & 18.16 \\
+Temperature   Sensor E & 18.18 & 18.53 \\
+Wind   Speed Sensor A  & 1.25  & 1.33  \\
+Wind   Speed Sensor B  & 1.19  & 1.29  \\
+Wind   Speed Sensor C  & 1.32  & 1.42  \\
+Wind   Speed Sensor D  & 1.53   & 1.63  \\
+Wind   Speed Sensor E  & 0.57  & 0.62 
+\end{tabular}
+\caption{95\% Confidence intervals as they can be found in “95\% Confidence Intervals.txt”}
+\label{tab:my-table}
+\end{table}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{CDF Temperature.png}
+  \caption{CDF Temperature}
+  \label{fig:CDF_temp}
+\end{figure}
+
+\begin{figure} [H]
+  \includegraphics[width=\textwidth]{CDF Wind Speed.png}
+  \caption{CDF Wind Speed}
+  \label{fig:CDF_ws}
+\end{figure}
+
+To test the hypothesis a two-tailed test with a significance level of $\alpha$ = 0.05 is chosen. The following hypothesis is tested:
+
+\begin{center}
+$H_0$: The time series between the two Sensors are the same
+
+$H_A$: The time series between the two Sensors are different
+\end{center}
+
+\noindent The T-test returns the following p-values:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|ll}
+      & Temperature & Wind Speed      \\ \hline
+E - D & 0.0027      & $3.3729 * 10^{-212}$ \\
+D - C & 0.4658      & $4.6101 * 10^{-9}$   \\
+C - B & 0.1855      & 0.0001          \\
+B - A & 0.4005      & 0.1335         
+\end{tabular}
+\caption{p-values of the T-test in between two Sensors}
+\label{tab:my-table}
+\end{table}
+
+\noindent With a significance level of $\alpha$ = 0.05, the following conclusions can be drawn through the p-values:
+
+\begin{center}
+If p-value $<$ $\alpha$ $\Rightarrow$ $H_0$ is rejected
+
+If p-value $>$ $\alpha$ $\Rightarrow$ $H_0$ can’t be rejected
+\end{center}
+
+
+\noindent Based on that, we can say that the time series of Wind Speed and Temperature between the Sensors E and D are significantly different (always in regard of a type I error). The time series between Sensors D and C, as well as C and B are also significantly different for Wind Speed. But for the Temperature time series, the findings are inconclusive and we can’t reject the null hypothesis. In practical terms it means that the series are too similar to reject $H_0$. This, of course, has always to be considered in regard of a possible type II error. The p-values in between Sensor A and B are also for both time series too high to reject the null hypothesis. 
+
+\section{Conclusion}
+
+Mean statistics are helpful to get an overview of the data and to make first assumptions. Here it was pointed out, that the values, especially the ones for the Temperature, are all very similar and that there is some more variation in between the Sensors for the Wind Speed. It was also already noticeable that Sensor E differs a little bit from the others. But mean statistics don’t allow to conclude if the difference is significant or not. Furthermore, plotting the data in different ways gives more information about the distribution of the data and makes it easy to interpret. The plots show, especially the ones for the Temperature, that the data of the Sensors are very similar. Again, there is some more variation in the variables Wind Speed and Wind Direction. Notably at the boxplots, it is apparent that Sensor E differs from the others. These two conclusions are reassured by the correlation between the Sensor variables. Temperature related measures are overall very similar and thus strongly correlated. Wind related measures seem to be more dependent on the particular location of the Sensors and are therefore less correlated. But throughout all the correlations, the ones with Sensor E are always the weakest ones. Finally, the hypothesis test gives statistically profound answers if the data of the Sensors are the same. Previous assumptions could be confirmed.
+
+\bibliographystyle{plain}
+
+\bibliography{bibliography}
+
+\end{document}
