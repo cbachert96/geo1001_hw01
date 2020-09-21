@@ -15,9 +15,11 @@ Each Sensor dataset is assigned to its own Variable in the beginning:
     S5 = Sensor E (HEAT -E_final.xls)
 Followingly, if any pre- or suffixes occur, it will always refer to Sensor A. As an example tS1 refers to the Temperature values of Sensor A.
 
-The code is separated in 4 parts, one for each lesson.
+The code is separated in 5 parts, one for each lesson plus the bonus question.
 
 To adapt the bin size of the Histograms, please change the variable "b" in line 69 accordingly.
 To get the 5-bins-Histograms as well as the 50-bins-Histograms the code needs to run twice with the changed variable.
 
 The file "95% Confidence Intervals.txt" from A4, will always be created in the current working directory.
+
+The bonus question is only answered in theory, there is no corresponding code to put it into practice.
